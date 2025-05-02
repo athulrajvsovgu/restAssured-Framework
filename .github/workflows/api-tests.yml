@@ -42,5 +42,5 @@ jobs:
         if: always()
         with:
           name: Test Execution Report
-          path: ./test-results/index.html
+          path: ./test-results/html/index.html
           retention-days: 7
