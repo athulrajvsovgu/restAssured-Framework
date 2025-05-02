@@ -5,19 +5,28 @@ services:
       - "8080:8080"
     healthcheck:
       test: ["CMD", "wget", "--spider", "--quiet", "http://localhost:8080/api/v3/openapi.json"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
-  
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    stop_grace_period: 1s
+
   test-petstore:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./target:/app/target
+      - .:/app
+      - .cache/.m2_petstore:/root/.m2
     environment:
+      - MAVEN_OPTS=-Xmx1024m
       - API_BASE_URL=http://petstore-api:8080/api/v3
     depends_on:
       petstore-api:
         condition: service_healthy
+    command: >
+      bash -c "
+        mvn clean test -DsuiteXmlFile=api-tests.xml && 
+        mkdir -p /app/results && 
+        cp -r /app/target/surefire-reports/html/* /app/results/ &&
+        chmod -R 777 /app/results"
