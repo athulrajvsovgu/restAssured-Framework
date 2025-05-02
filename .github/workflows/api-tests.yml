@@ -21,7 +21,7 @@ jobs:
       
       - name: Start API and Run Tests
         run: |
-          docker compose up --build --exit-code-from test-petstore
+          docker compose up --build --exit-code-from test-petstore test-petstore --command "bash -c \"mvn clean test -Dapi.test.suites=api-tests.xml && mkdir -p /app/results && cp -r /app/target/surefire-reports/html/* /app/results/ && chmod -R 777 /app/results\""
       
       - name: Copy Test Results
         if: always()
