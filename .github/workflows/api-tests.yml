@@ -16,22 +16,28 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       
+      - name: Set up Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose-plugin
+          docker compose version
+      
       - name: Start API and Run Tests
         run: |
-          docker-compose up --build --exit-code-from test-petstore
+          docker compose up --build --exit-code-from test-petstore
       
       - name: Copy Test Results
         if: always()
         run: |
           mkdir -p test-results
-          docker cp $(docker ps -aq -f name=api-testing_test-petstore):/app/results ./test-results || true
+          find . -name "surefire-reports" -type d -exec cp -r {} ./test-results \; || true
       
       - name: Publish Test Report
         uses: dorny/test-reporter@v1
         if: always()
         with:
           name: TestNG Results
-          path: target/surefire-reports/TEST-*.xml
+          path: ./test-results/TEST-*.xml
           reporter: java-junit
       
       - name: Upload HTML Reports
