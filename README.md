@@ -94,7 +94,7 @@ A sample execution report could be found [here](results/index.html).
 And the logs reside in:
 
 ```
-logs/appium-tests.log
+logs/restAssured-logs.log
 ```
 
 
