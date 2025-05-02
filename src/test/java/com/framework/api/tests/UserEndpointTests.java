@@ -116,7 +116,7 @@ public class UserEndpointTests extends BaseTest {
 		Assert.assertEquals(retrieveUserFromResponse.getId(), updateUserPayload.getId(),
 				"IDs was not updated successfully");
 
-		Assert.assertEquals(retrieveUserFromResponse.getUsername(), newUser.getUsername(),
+		Assert.assertEquals(retrieveUserFromResponse.getFirstName(), newUser.getUsername(),
 				"User names was not updated successfully");
 
 		Assert.assertEquals(retrieveUserFromResponse.getFirstName(), updateUserPayload.getFirstName(),
