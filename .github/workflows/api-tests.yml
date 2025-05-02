@@ -34,7 +34,7 @@ jobs:
         if: always()
         with:
           name: TestNG Results
-          path: ./test-results/TEST-*.xml
+          path: ./test-results/xml/*.xml
           reporter: java-junit
       
       - name: Upload HTML Reports
@@ -42,5 +42,5 @@ jobs:
         if: always()
         with:
           name: Test Execution Report
-          path: ./test-results/html/index.html
+          path: ./test-results/html/*
           retention-days: 7
