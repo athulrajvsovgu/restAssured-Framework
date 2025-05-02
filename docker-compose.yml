@@ -25,8 +25,4 @@ services:
       petstore-api:
         condition: service_healthy
     command: >
-      bash -c "
-        mvn clean test -DsuiteXmlFile=api-tests.xml && 
-        mkdir -p /app/test-results && 
-        cp -r /app/target/surefire-reports/* /app/test-results/ &&
-        chmod -R 777 /app/test-results"
+      bash -c "mvn clean test -DsuiteXmlFile=api-tests.xml"
