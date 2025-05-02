@@ -24,12 +24,9 @@ jobs:
           docker compose up --build --exit-code-from test-petstore
       
       - name: Publish Test Report
-        uses: starburstdata/action-testng-report@v1
+        uses: scacap/action-surefire-report@v1
         if: always()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          check_name: test
-          update_existing_check: true
           report_paths: ./test-results/testng-results.xml
       
       - name: Upload HTML Reports
