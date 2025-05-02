@@ -33,7 +33,7 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          check_name: Test Execution Report
+          check_name: Test Report
           update_existing_check: true
           report_paths: ./target/surefire-reports/testng-results.xml
       
