@@ -1,5 +1,5 @@
 .cache/*
-target/
+target/*
 node_modules/
 .project
 .classpath
