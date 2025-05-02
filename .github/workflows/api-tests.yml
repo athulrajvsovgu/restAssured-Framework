@@ -24,12 +24,14 @@ jobs:
           docker compose up --build --exit-code-from test-petstore
       
       - name: Publish Test Report
-        uses: dorny/test-reporter@v2
+        uses: starburstdata/action-testng-report@v1
         if: always()
         with:
           name: TestNG Results
-          path: ./test-results/TEST-*.xml
-          reporter: java-testng
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          check_name: test
+          update_existing_check: true
+          report_paths: ./test-results/TEST-*.xml
       
       - name: Upload HTML Reports
         uses: actions/upload-artifact@v4
