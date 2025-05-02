@@ -1,5 +1,10 @@
 name: RestAssured API Test Pipeline
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  checks: write
 
 on:
   push:
