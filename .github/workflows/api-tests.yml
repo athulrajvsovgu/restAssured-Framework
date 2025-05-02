@@ -1,4 +1,4 @@
-name: API Test Pipeline
+name: RestAssured API Test Pipeline
 
 on:
   push:
@@ -28,8 +28,8 @@ jobs:
         if: always()
         with:
           name: TestNG Results
-          path: ./test-results/xml/*.xml
-          reporter: java-junit
+          path: ./test-results/TEST-*.xml
+          reporter: java-testng
       
       - name: Upload HTML Reports
         uses: actions/upload-artifact@v4
