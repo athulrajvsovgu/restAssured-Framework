@@ -1,18 +1,7 @@
 .cache/*
-
-# Specific target directories with exceptions
 target/
-!target/
-target/*
-!target/surefire-reports/
-target/surefire-reports/*
-!target/surefire-reports/html/
-!target/surefire-reports/xml/
-!target/surefire-reports/TEST-TestSuite.xml
-
 node_modules/
 .project
 .classpath
 package-lock.json
-
 site/
