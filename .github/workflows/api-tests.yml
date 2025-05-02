@@ -27,7 +27,7 @@ jobs:
         uses: scacap/action-surefire-report@v1
         if: always()
         with:
-          github_token: ${{ github.token }}
+          github_token: ${{ secrets.TESTNG_TOKEN_GITHUB_ACTIONS }}
           check_name: test
           create_check: true
           report_paths: ./target/surefire-reports/TEST-*.xml
