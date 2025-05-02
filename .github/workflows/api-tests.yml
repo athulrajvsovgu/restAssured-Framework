@@ -21,15 +21,13 @@ jobs:
       
       - name: Start API and Run Tests
         run: |
-          sed -i 's/mvn clean test -DsuiteXmlFile=api-tests.xml/mvn clean test -Dapi.test.suites=api-tests.xml/g' docker-compose.yml
-          cat docker-compose.yml
           docker compose up --build --exit-code-from test-petstore
       
       - name: Copy Test Results
         if: always()
         run: |
           mkdir -p test-results
-          find . -name "surefire-reports" -type d -exec cp -r {} ./test-results \; || true
+          find . -path "*/target/surefire-reports" -type d -exec cp -r {} ./test-results \; || true
       
       - name: Publish Test Report
         uses: dorny/test-reporter@v2
@@ -43,6 +41,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-reports
-          path: test-results
+          name: Test Execution Report
+          path: ./test-results/index.html
           retention-days: 7

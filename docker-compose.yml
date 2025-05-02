@@ -27,6 +27,6 @@ services:
     command: >
       bash -c "
         mvn clean test -DsuiteXmlFile=api-tests.xml && 
-        mkdir -p /app/results && 
-        cp -r /app/target/surefire-reports/html/* /app/results/ &&
-        chmod -R 777 /app/results"
+        mkdir -p /app/test-results && 
+        cp -r /app/target/surefire-reports/* /app/test-results/ &&
+        chmod -R 777 /app/test-results"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="User Endpoit Tests"
+           tests="5"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="1.102">
+  <properties />
+  
+  
+            <testcase name="testUpdateUser" time="0.022" classname="com.framework.api.tests.UserEndpointTests" />
+                <testcase name="testGetUserByUsername" time="0.071" classname="com.framework.api.tests.UserEndpointTests" />
+                <testcase name="testCreateUser" time="0.850" classname="com.framework.api.tests.UserEndpointTests" />
+                <testcase name="testUserSchema" time="0.127" classname="com.framework.api.tests.UserEndpointTests" />
+                <testcase name="testDeleteUser" time="0.032" classname="com.framework.api.tests.UserEndpointTests" />
+      
+</testsuite>
