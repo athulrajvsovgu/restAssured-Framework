@@ -28,7 +28,7 @@ jobs:
         if: always()
         with:
           name: TestNG Report
-          path: ./test-results/testng*.xml
+          path: ./test-results/junitreports/TEST-*.xml
           reporter: java-junit
       
       - name: Upload HTML Reports
