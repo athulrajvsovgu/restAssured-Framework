@@ -1,0 +1,43 @@
+name: API Test Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Start API and Run Tests
+        run: |
+          docker-compose up --build --exit-code-from test-petstore
+      
+      - name: Copy Test Results
+        if: always()
+        run: |
+          mkdir -p test-results
+          docker cp $(docker ps -aq -f name=api-testing_test-petstore):/app/results ./test-results || true
+      
+      - name: Publish Test Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: TestNG Results
+          path: target/surefire-reports/TEST-*.xml
+          reporter: java-junit
+      
+      - name: Upload HTML Reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-reports
+          path: test-results
+          retention-days: 7

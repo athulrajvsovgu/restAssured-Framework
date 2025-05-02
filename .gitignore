@@ -1,0 +1,16 @@
+.cache/*
+
+# Specific target directories with exceptions
+target/
+!target/
+target/*
+!target/surefire-reports/
+target/surefire-reports/*
+!target/surefire-reports/html/
+
+node_modules/
+.project
+.classpath
+package-lock.json
+
+site/

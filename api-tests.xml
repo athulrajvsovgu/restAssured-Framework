@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="PetStore API Test Suite">
+
+	<!-- ReportNG listeners -->
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+	
+	<test name="User Endpoit Tests">
+		<classes>
+			<class name="com.framework.api.tests.UserEndpointTests" />
+		</classes>
+	</test>
+	
+</suite> 
