@@ -24,7 +24,7 @@ jobs:
           docker compose up --build --exit-code-from test-petstore
       
       - name: Publish Test Report
-        uses: starburstdata/action-testng-report@main
+        uses: starburstdata/action-testng-report@v1
         if: always()
         with:
           github_token: ${{ secrets.TESTNG_TOKEN_GITHUB_ACTIONS }}
