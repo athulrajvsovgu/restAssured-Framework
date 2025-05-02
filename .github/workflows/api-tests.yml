@@ -24,10 +24,12 @@ jobs:
           docker compose up --build --exit-code-from test-petstore
       
       - name: Publish Test Report
-        uses: scacap/action-surefire-report@v1
+        uses: dorny/test-reporter@v2
         if: always()
         with:
-          report_paths: ./test-results/testng-results.xml
+          name: TestNG Report
+          path: ./test-results/testng*.xml
+          reporter: java-junit
       
       - name: Upload HTML Reports
         uses: actions/upload-artifact@v4
